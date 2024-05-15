@@ -12,6 +12,7 @@ export const getData = async () => {
 };
 
 export const addLift = async (data: liftType) => {
+  console.log("data", data);
   const { id, date, lift: liftData, numSets, numReps, weightAmt } = data;
 
   try {

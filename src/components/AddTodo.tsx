@@ -1,4 +1,5 @@
 "use client";
+import { useAuth } from "@clerk/nextjs";
 import { ChangeEvent, FC, useState } from "react";
 
 interface Props {
@@ -40,9 +41,10 @@ const AddTodo: FC<Props> = ({ createTodo }) => {
   };
 
   // Event handler for adding a new todo
+  const user = useAuth();
   const handleAdd = async () => {
     createTodo({
-      id: String(Math.floor(Math.random() * 1000)),
+      id: user.userId,
       date,
       lift,
       numSets,
