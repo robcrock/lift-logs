@@ -1,7 +1,10 @@
-import { text, boolean, pgTable, integer } from "drizzle-orm/pg-core";
+import { text, pgTable, numeric, date } from "drizzle-orm/pg-core";
 
-export const todo = pgTable("todo", {
-  id: integer("id").primaryKey(),
-  text: text("text").notNull(),
-  done: boolean("done").default(false).notNull(),
+export const lift = pgTable("lift", {
+  id: numeric("id").primaryKey(),
+  lift: text("lift").notNull(),
+  date: date("date").notNull(),
+  numSets: numeric("num_sets").notNull(),
+  numReps: numeric("num_reps").notNull(),
+  weightAmt: numeric("weight_amt").notNull(),
 });

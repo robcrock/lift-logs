@@ -1,53 +1,53 @@
 "use client";
 import { FC, useState } from "react";
-import { todoType } from "@/types/todoType";
+import { liftType } from "@/types/liftType";
 import Todo from "./Todo";
 import AddTodo from "./AddTodo";
 import {
-  addTodo,
-  deleteTodo,
-  editTodo,
-  toggleTodo,
+  addLift,
+  // deleteTodo,
+  // editTodo,
+  // toggleTodo,
 } from "@/actions/todoActions";
 
 interface Props {
-  todos: todoType[];
+  todos: liftType[];
 }
 
 const Todos: FC<Props> = ({ todos }) => {
   // State to manage the list of todo items
-  const [todoItems, setTodoItems] = useState<todoType[]>(todos);
+  const [todoItems, setTodoItems] = useState<liftType[]>(todos);
 
   // Function to create a new todo item
-  const createTodo = (text: string) => {
+  const createTodo = (data: any) => {
     const id = (todoItems.at(-1)?.id || 0) + 1;
-    addTodo(text);
-    setTodoItems((prev) => [...prev, { id: id, text, done: false }]);
+    addLift(data);
+    setTodoItems((prev) => [...prev, { id, ...data }]);
   };
 
   // Function to change the text of a todo item
-  const changeTodoText = (id: number, text: string) => {
-    setTodoItems((prev) =>
-      prev.map((todo) => (todo.id === id ? { ...todo, text } : todo))
-    );
-    editTodo(id, text);
-  };
+  // const changeTodoText = (id: number, text: string) => {
+  //   setTodoItems((prev) =>
+  //     prev.map((todo) => (todo.id === id ? { ...todo, text } : todo))
+  //   );
+  // editTodo(id, text);
+  // };
 
   // Function to toggle the "done" status of a todo item
-  const toggleIsTodoDone = (id: number, isDone: boolean) => {
-    setTodoItems((prev) =>
-      prev.map((todo) =>
-        todo.id === id ? { ...todo, done: !todo.done } : todo
-      )
-    );
-    toggleTodo(id, isDone);
-  };
+  // const toggleIsTodoDone = (id: number, isDone: boolean) => {
+  //   setTodoItems((prev) =>
+  //     prev.map((todo) =>
+  //       todo.id === id ? { ...todo, done: !todo.done } : todo
+  //     )
+  //   );
+  // toggleTodo(id, isDone);
+  // };
 
   // Function to delete a todo item
-  const deleteTodoItem = (id: number) => {
-    setTodoItems((prev) => prev.filter((todo) => todo.id !== id));
-    deleteTodo(id);
-  };
+  // const deleteTodoItem = (id: number) => {
+  //   setTodoItems((prev) => prev.filter((todo) => todo.id !== id));
+  // deleteTodo(id);
+  // };
 
   // Rendering the Todo List component
   return (
@@ -58,10 +58,10 @@ const Todos: FC<Props> = ({ todos }) => {
         {todoItems.map((todo) => (
           <Todo
             key={todo.id}
-            todo={todo}
-            changeTodoText={changeTodoText}
-            toggleIsTodoDone={() => toggleIsTodoDone(todo.id, !todo.done)}
-            deleteTodoItem={deleteTodoItem}
+            lift={todo}
+            // changeTodoText={changeTodoText}
+            // toggleIsTodoDone={() => toggleIsTodoDone(todo.id, !todo.done)}
+            // deleteTodoItem={deleteTodoItem}
           />
         ))}
       </div>
