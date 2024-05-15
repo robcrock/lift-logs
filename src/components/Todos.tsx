@@ -20,7 +20,7 @@ const Todos: FC<Props> = ({ todos }) => {
 
   // Function to create a new todo item
   const createTodo = (data: any) => {
-    const id = (todoItems.at(-1)?.id || 0) + 1;
+    const id = String((Number(todoItems.at(-1)?.id) || 0) + 1);
     addLift(data);
     setTodoItems((prev) => [...prev, { id, ...data }]);
   };

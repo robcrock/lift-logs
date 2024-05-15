@@ -42,7 +42,7 @@ const AddTodo: FC<Props> = ({ createTodo }) => {
   // Event handler for adding a new todo
   const handleAdd = async () => {
     createTodo({
-      id: Math.floor(Math.random() * 1000),
+      id: String(Math.floor(Math.random() * 1000)),
       date,
       lift,
       numSets,

@@ -4,19 +4,15 @@ import { revalidatePath } from "next/cache";
 
 import db from "@/db/drizzle";
 import { lift } from "@/db/schema";
+import { liftType } from "@/types/liftType";
 
 export const getData = async () => {
   const data = await db.select().from(lift);
   return data;
 };
 
-export const addLift = async (data: any) => {
-  console.log("DATA", data);
+export const addLift = async (data: liftType) => {
   const { id, date, lift: liftData, numSets, numReps, weightAmt } = data;
-
-  console.log(typeof numSets, numSets);
-  console.log(typeof numReps, numReps);
-  console.log(typeof weightAmt, weightAmt);
 
   try {
     await db.insert(lift).values({
