@@ -1,5 +1,5 @@
 export type liftType = {
-  id: string;
+  userId: string;
   date: string;
   lift: string;
   numSets: number;

@@ -1,5 +1,5 @@
 "use server";
-import { eq } from "drizzle-orm";
+
 import { revalidatePath } from "next/cache";
 
 import db from "@/db/drizzle";
@@ -13,16 +13,16 @@ export const getData = async () => {
 
 export const addLift = async (data: liftType) => {
   console.log("data", data);
-  const { id, date, lift: liftData, numSets, numReps, weightAmt } = data;
+  const { userId, date, lift: liftData, numSets, numReps, weightAmt } = data;
 
   try {
     await db.insert(lift).values({
-      id,
+      userId,
       date,
       lift: liftData,
-      numSets: Number(numSets),
-      numReps: Number(numReps),
-      weightAmt: Number(weightAmt),
+      numSets,
+      numReps,
+      weightAmt,
     });
     revalidatePath("/"); // Ensure this function is defined or imported
   } catch (error) {

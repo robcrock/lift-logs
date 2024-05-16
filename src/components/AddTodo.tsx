@@ -44,7 +44,7 @@ const AddTodo: FC<Props> = ({ createTodo }) => {
   const user = useAuth();
   const handleAdd = async () => {
     createTodo({
-      id: user.userId,
+      userId: user.userId,
       date,
       lift,
       numSets,

@@ -8,7 +8,7 @@ import {
   // deleteTodo,
   // editTodo,
   // toggleTodo,
-} from "@/actions/todoActions";
+} from "@/actions/liftActions";
 
 interface Props {
   todos: liftType[];
@@ -20,9 +20,9 @@ const Todos: FC<Props> = ({ todos }) => {
 
   // Function to create a new todo item
   const createTodo = (data: any) => {
-    const id = String((Number(todoItems.at(-1)?.id) || 0) + 1);
+    console.log("Create todo", data);
     addLift(data);
-    setTodoItems((prev) => [...prev, { id, ...data }]);
+    setTodoItems((prev) => [...prev, { ...data }]);
   };
 
   // Function to change the text of a todo item

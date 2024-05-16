@@ -1,4 +1,4 @@
-import { getData } from "@/actions/todoActions";
+import { getData } from "@/actions/liftActions";
 import Todos from "@/components/Todos";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 

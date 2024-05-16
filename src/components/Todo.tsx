@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent, FC, useState } from "react";
+import { FC, useState } from "react";
 import { liftType } from "@/types/liftType";
 
 interface Props {
