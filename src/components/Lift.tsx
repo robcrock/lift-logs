@@ -10,7 +10,7 @@ interface Props {
 }
 
 // const Todo: FC<Props> = ({ lift, changeTodoText, deleteTodoItem }) => {
-const Todo: FC<Props> = ({ lift }) => {
+const Lift: FC<Props> = ({ lift }) => {
   // State for handling editing mode
   const [editing, setEditing] = useState(false);
 
@@ -98,4 +98,4 @@ const Todo: FC<Props> = ({ lift }) => {
   );
 };
 
-export default Todo;
+export default Lift;

@@ -1,8 +1,9 @@
 export type liftType = {
+  id: string;
   userId: string;
   date: string;
   lift: string;
-  numSets: number;
-  numReps: number;
-  weightAmt: number;
+  sets: string;
+  reps: string;
+  weight: string;
 };
