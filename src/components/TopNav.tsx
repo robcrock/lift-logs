@@ -39,7 +39,9 @@ export const TopNav = () => {
             </div>
           </div>
           <SignedOut>
-            <SignInButton />
+            <div className="text-[#2e026d]">
+              <SignInButton />
+            </div>
           </SignedOut>
           <SignedIn>
             <UserButton />

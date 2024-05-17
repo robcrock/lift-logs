@@ -1,9 +1,11 @@
 export type liftType = {
-  id: string;
+  id?: string;
   userId: string;
-  date: string;
   lift: string;
+  date: string;
   sets: string;
   reps: string;
   weight: string;
+  created_at?: string;
+  updated_at?: string;
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { useFormStatus } from "react-dom";
 
 export const Button = () => {
-  const { pending, data, method, action } = useFormStatus();
+  const { pending } = useFormStatus();
   return (
     <button
       disabled={pending}
