@@ -5,7 +5,8 @@ TODO:
 [x] Correctly revalidate the path after the post is made
 [x] Optimistically update the UI
 [x] The list should display the user name
-[ ] Create a select for the lift type
+[x] Create a select for the lift type
+[ ] Consolidate components and update the form to be a Shadcn/ui form
 [ ] Create a table to display lift data
 [ ] Improve the design for bench press entries
 [ ] Improve the design of the lift list

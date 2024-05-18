@@ -2,6 +2,13 @@
 
 import { useRef } from "react";
 import { Button } from "./Button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const AddLift = ({ createLift }: { createLift: any }) => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -20,11 +27,17 @@ const AddLift = ({ createLift }: { createLift: any }) => {
         name="date"
         className="w-full px-2 py-1 border border-gray-200 rounded outline-none text-black"
       />
-      <input
-        type="text"
-        name="lift"
-        className="w-full px-2 py-1 border border-gray-200 rounded outline-none text-black"
-      />
+      <Select name="lift">
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="Lift" />
+        </SelectTrigger>
+        <SelectContent className="text-slate">
+          <SelectItem value="deadlift">Deadlift</SelectItem>
+          <SelectItem value="squat">Squat</SelectItem>
+          <SelectItem value="bench">Bench</SelectItem>
+          <SelectItem value="press">Press</SelectItem>
+        </SelectContent>
+      </Select>
       <input
         type="number"
         name="sets"
