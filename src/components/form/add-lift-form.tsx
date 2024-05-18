@@ -1,7 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { Button } from "./Button";
+
+import { useFormStatus } from "react-dom";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -12,6 +14,8 @@ import {
 
 const AddLift = ({ createLift }: { createLift: any }) => {
   const formRef = useRef<HTMLFormElement>(null);
+
+  const { pending } = useFormStatus();
 
   return (
     <form
@@ -53,7 +57,9 @@ const AddLift = ({ createLift }: { createLift: any }) => {
         name="weight"
         className="w-full px-2 py-1 border border-gray-200 rounded outline-none text-black"
       />
-      <Button />
+      <Button variant="secondary" disabled={pending}>
+        Add Log
+      </Button>
     </form>
   );
 };

@@ -6,7 +6,8 @@ TODO:
 [x] Optimistically update the UI
 [x] The list should display the user name
 [x] Create a select for the lift type
-[ ] Consolidate components and update the form to be a Shadcn/ui form
+[x] Consolidate components
+[ ] Update the form to be a Shadcn/ui form
 [ ] Create a table to display lift data
 [ ] Improve the design for bench press entries
 [ ] Improve the design of the lift list

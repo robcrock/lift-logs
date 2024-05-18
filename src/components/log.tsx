@@ -2,7 +2,7 @@
 
 import { liftType } from "@/types/liftType";
 
-const Lift = ({ lift }: { lift: liftType }) => {
+const Log = ({ lift }: { lift: liftType }) => {
   return (
     <div className="flex items-center gap-2 p-4 border-gray-200 border-solid border rounded-lg">
       <ul className="flex gap-4">
@@ -17,4 +17,4 @@ const Lift = ({ lift }: { lift: liftType }) => {
   );
 };
 
-export default Lift;
+export default Log;
