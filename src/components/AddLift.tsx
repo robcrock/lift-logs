@@ -1,24 +1,18 @@
 "use client";
 
-import { addLift } from "@/actions/liftActions";
-import { useAuth } from "@clerk/nextjs";
 import { useRef } from "react";
 import { Button } from "./Button";
 
-const AddLift = () => {
+const AddLift = ({ createLift }: { createLift: any }) => {
   const formRef = useRef<HTMLFormElement>(null);
-  const user = useAuth();
-
-  const handleAddLift = async (formData: FormData) => {
-    if (!user) return;
-    formRef.current?.reset();
-    await addLift(user.userId as string, formData);
-  };
 
   return (
     <form
       ref={formRef}
-      action={handleAddLift}
+      action={(formData: FormData) => {
+        formRef.current?.reset();
+        createLift(formData);
+      }}
       className="w-full flex gap-1 mt-2"
     >
       <input

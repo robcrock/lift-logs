@@ -1,0 +1,1 @@
+ALTER TABLE "lift" ADD COLUMN "user_full_name" text NOT NULL;

@@ -10,6 +10,7 @@ import {
 export const lift = pgTable("lift", {
   id: uuid("id").defaultRandom().primaryKey(),
   userId: text("user_id").notNull(),
+  userFullName: text("user_full_name").notNull(),
   lift: text("lift").notNull(),
   date: date("date").notNull(),
   sets: numeric("sets").notNull(),

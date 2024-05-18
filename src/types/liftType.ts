@@ -1,6 +1,7 @@
 export type liftType = {
   id?: string;
   userId: string;
+  userFullName: string;
   lift: string;
   date: string;
   sets: string;

@@ -15,6 +15,13 @@
       "when": 1715912901587,
       "tag": "0001_tiny_namorita",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1716001283942,
+      "tag": "0002_wonderful_the_professor",
+      "breakpoints": true
     }
   ]
 }
