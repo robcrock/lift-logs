@@ -7,8 +7,16 @@ TODO:
 [x] The list should display the user name
 [x] Create a select for the lift type
 [x] Consolidate components
-[ ] Add unit kgs/lbs to the form
-[ ] Update the form to be a Shadcn/ui form
-[ ] Create a table to display lift data
-[ ] Improve the design for bench press entries
-[ ] Improve the design of the lift list
+[x] Add unit kgs/lbs to the form
+[x] Update the form to be a Shadcn/ui form
+[x] Improve the design for bench press entries
+[x] Improve the design of the lift list
+[x] Display data by lifts in the database
+[x] Group lifts by the lift type
+[ ] Add a rank to the table
+[ ] show a max of 5 records per table and scroll after that
+[ ] Update the Top Nav
+[ ] Allow users to enter the age
+[ ] Allow users to view only their lift logs
+[ ] Add charts for their logs
+[ ] Add filters to the Logs so users can see how they compare to others
