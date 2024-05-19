@@ -11,14 +11,16 @@ export const getData = async () => {
   return data;
 };
 
-export const addLift = async (formData: FormData) => {
+export const addLift = async (date: string, formData: FormData) => {
   const user = await currentUser();
+
+  console.log("formData", formData);
 
   const values: liftType = {
     userId: user?.id as string,
     userFullName: user?.fullName as string,
     lift: formData.get("lift") as string,
-    date: formData.get("date") as string,
+    date,
     sets: formData.get("sets") as string,
     reps: formData.get("reps") as string,
     weight: formData.get("weight") as string,
