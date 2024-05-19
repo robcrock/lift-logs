@@ -12,10 +12,18 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+const SubmitFormButton = () => {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button variant="secondary" disabled={pending}>
+      {pending ? "Adding log..." : "Add Log"}
+    </Button>
+  );
+};
+
 const AddLift = ({ createLift }: { createLift: any }) => {
   const formRef = useRef<HTMLFormElement>(null);
-
-  const { pending } = useFormStatus();
 
   return (
     <form
@@ -57,9 +65,16 @@ const AddLift = ({ createLift }: { createLift: any }) => {
         name="weight"
         className="w-full px-2 py-1 border border-gray-200 rounded outline-none text-black"
       />
-      <Button variant="secondary" disabled={pending}>
-        Add Log
-      </Button>
+      <Select name="lift">
+        <SelectTrigger className="w-[180px]">
+          <SelectValue placeholder="unit" />
+        </SelectTrigger>
+        <SelectContent className="text-slate">
+          <SelectItem value="lbs">lbs</SelectItem>
+          <SelectItem value="kgs">kgs</SelectItem>
+        </SelectContent>
+      </Select>
+      <SubmitFormButton />
     </form>
   );
 };

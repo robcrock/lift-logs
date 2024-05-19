@@ -22,6 +22,7 @@ export const addLift = async (formData: FormData) => {
     sets: formData.get("sets") as string,
     reps: formData.get("reps") as string,
     weight: formData.get("weight") as string,
+    unit: formData.get("unit") as string,
   };
 
   await db.insert(lift).values(values);

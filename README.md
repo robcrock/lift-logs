@@ -7,6 +7,7 @@ TODO:
 [x] The list should display the user name
 [x] Create a select for the lift type
 [x] Consolidate components
+[ ] Add unit kgs/lbs to the form
 [ ] Update the form to be a Shadcn/ui form
 [ ] Create a table to display lift data
 [ ] Improve the design for bench press entries

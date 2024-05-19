@@ -7,6 +7,7 @@ export type liftType = {
   sets: string;
   reps: string;
   weight: string;
+  unit: string;
   created_at?: string;
   updated_at?: string;
 };

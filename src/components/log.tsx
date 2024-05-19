@@ -12,6 +12,7 @@ const Log = ({ lift }: { lift: liftType }) => {
         <li>{lift.sets}</li>
         <li>{lift.reps}</li>
         <li>{lift.weight}</li>
+        <li>{lift.unit}</li>
       </ul>
     </div>
   );

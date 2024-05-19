@@ -16,6 +16,7 @@ export const lift = pgTable("lift", {
   sets: numeric("sets").notNull(),
   reps: numeric("reps").notNull(),
   weight: numeric("weight").notNull(),
+  unit: text("unit").default("lbs").notNull(),
   createdAt: timestamp("create_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
