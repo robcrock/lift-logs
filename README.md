@@ -19,6 +19,9 @@ TODO:
 [x] Deploy so that other users can enter their information
 [x] Drop the date column from the Table
 [x] Display only the top logs by lift, user, reps, sets
+[x] Fix the ordering issue
+[ ] Delete dummy data
+[ ] Update lift selector
 [ ] Fix TypeScript errors
 [ ] Review Drizzle Docs
 [ ] Update the table to be a Data Table instead of the basic Shadcn table

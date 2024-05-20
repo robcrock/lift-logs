@@ -1,5 +1,5 @@
-import { liftType, maxLiftType } from "@/types/liftType";
-import { getData, getMaxLiftByUser } from "@/actions/liftActions";
+import { maxLiftType } from "@/types/liftType";
+import { getMaxWeightByUser } from "@/actions/liftActions";
 import {
   Table,
   TableBody,
@@ -19,7 +19,7 @@ const LiftTable = ({ title, logs }: { title: string; logs: maxLiftType[] }) => {
             <TableRow>
               <TableHead>Rank</TableHead>
               <TableHead>Name</TableHead>
-              <TableHead>Weight</TableHead>
+              <TableHead>Max Weight</TableHead>
               <TableHead>Reps</TableHead>
               <TableHead>Sets</TableHead>
             </TableRow>
@@ -29,7 +29,7 @@ const LiftTable = ({ title, logs }: { title: string; logs: maxLiftType[] }) => {
               <TableRow key={log.id}>
                 <TableCell>{`# ${rank + 1}`}</TableCell>
                 <TableCell>{log.userFullName}</TableCell>
-                <TableCell className="text-end font-medium">{`${log.weight} lbs`}</TableCell>
+                <TableCell className="text-end font-medium">{`${log.maxWeight} lbs`}</TableCell>
                 <TableCell className="text-end">{log.reps}</TableCell>
                 <TableCell className="text-end">{log.sets}</TableCell>
               </TableRow>
@@ -42,7 +42,7 @@ const LiftTable = ({ title, logs }: { title: string; logs: maxLiftType[] }) => {
 };
 
 const LiftLogs = async () => {
-  const data = (await getMaxLiftByUser()) as maxLiftType[];
+  const data = (await getMaxWeightByUser()) as maxLiftType[];
 
   console.log("data", data);
 

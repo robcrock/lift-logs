@@ -2,10 +2,10 @@ export type maxLiftType = {
   userId: string;
   userFullName: string;
   lift: string;
+  maxWeight: string;
   weight: string;
   reps: string;
   sets: string;
-  totalVolume: string;
 };
 
 export type liftType = {
