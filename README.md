@@ -16,8 +16,13 @@ TODO:
 [x] Add a rank to the table
 [x] show a max of 5 records per table and scroll after that
 [x] Improve the date formatting
-[ ] Deploy so that other users can enter their information
+[x] Deploy so that other users can enter their information
+[x] Drop the date column from the Table
+[x] Display only the top logs by lift, user, reps, sets
+[ ] Fix TypeScript errors
+[ ] Review Drizzle Docs
 [ ] Update the table to be a Data Table instead of the basic Shadcn table
+[ ] Make it dark mode
 [ ] Update the Top Nav
 [ ] Allow users to enter the age
 [ ] Allow users to view only their lift logs

@@ -5,9 +5,32 @@ import db from "@/db/drizzle";
 import { lift } from "@/db/schema";
 import { liftType } from "@/types/liftType";
 import { currentUser } from "@clerk/nextjs/server";
+import { sql } from "drizzle-orm";
 
 export const getData = async () => {
   const data = await db.select().from(lift);
+  return data;
+};
+
+export const getMaxLiftByUser = async () => {
+  const calculateTotalVolumn = (lift: liftType) => {
+    return sql`SUM(${lift.reps} * ${lift.sets} * ${lift.unit === "kg" ? lift.weight * 2.20462 : lift.weight})`;
+  };
+
+  const data = await db
+    .select({
+      userId: lift.userId,
+      userFullName: lift.userFullName,
+      lift: lift.lift,
+      weight: sql`MAX(${lift.weight})`,
+      reps: lift.reps,
+      sets: lift.sets,
+      totalVolume: calculateTotalVolumn(lift),
+    })
+    .from(lift)
+    .groupBy(lift.userId, lift.userFullName, lift.lift, lift.reps, lift.sets)
+    .orderBy(calculateTotalVolumn(lift));
+
   return data;
 };
 

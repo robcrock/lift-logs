@@ -1,6 +1,5 @@
 import { liftType } from "@/types/liftType";
-import { parseISO, format } from "date-fns";
-import { getData } from "@/actions/liftActions";
+import { getData, getMaxLiftByUser } from "@/actions/liftActions";
 import {
   Table,
   TableBody,
@@ -21,9 +20,8 @@ const LiftTable = ({ title, logs }: { title: string; logs: liftType[] }) => {
               <TableHead>Rank</TableHead>
               <TableHead>Name</TableHead>
               <TableHead>Weight</TableHead>
-              <TableHead>Sets</TableHead>
               <TableHead>Reps</TableHead>
-              <TableHead>Date</TableHead>
+              <TableHead>Sets</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -31,12 +29,9 @@ const LiftTable = ({ title, logs }: { title: string; logs: liftType[] }) => {
               <TableRow key={log.id}>
                 <TableCell>{`# ${rank + 1}`}</TableCell>
                 <TableCell>{log.userFullName}</TableCell>
-                <TableCell className="font-medium">{`${log.weight} ${log.unit}`}</TableCell>
-                <TableCell>{log.sets}</TableCell>
-                <TableCell>{log.reps}</TableCell>
-                <TableCell>
-                  {format(parseISO(log.date), "MMM dd, yy")}
-                </TableCell>
+                <TableCell className="text-end font-medium">{`${log.weight} lbs`}</TableCell>
+                <TableCell className="text-end">{log.reps}</TableCell>
+                <TableCell className="text-end">{log.sets}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -47,18 +42,12 @@ const LiftTable = ({ title, logs }: { title: string; logs: liftType[] }) => {
 };
 
 const LiftLogs = async () => {
-  const data = await getData();
+  const data = await getMaxLiftByUser();
+
+  console.log("data", data);
 
   return (
     <div className="space-y-6">
-      <LiftTable
-        title="Bench Press"
-        logs={data.filter(({ lift }) => lift === "bench")}
-      />
-      <LiftTable
-        title="Overhead Press"
-        logs={data.filter(({ lift }) => lift === "press")}
-      />
       <LiftTable
         title="Deadlift"
         logs={data.filter(({ lift }) => lift === "deadlift")}
@@ -66,6 +55,14 @@ const LiftLogs = async () => {
       <LiftTable
         title="Squat"
         logs={data.filter(({ lift }) => lift === "squat")}
+      />
+      <LiftTable
+        title="Bench Press"
+        logs={data.filter(({ lift }) => lift === "bench")}
+      />
+      <LiftTable
+        title="Overhead Press"
+        logs={data.filter(({ lift }) => lift === "press")}
       />
     </div>
   );
