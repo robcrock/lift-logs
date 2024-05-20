@@ -101,6 +101,7 @@ const AddLift = ({ createLift }: { createLift: any }) => {
                     placeholder="Enter weight"
                     type="number"
                     name="weight"
+                    step="0.01"
                   />
                 </div>
                 <div className="flex self-end rounded-md shadow-sm">

@@ -1,4 +1,4 @@
-import { liftType } from "@/types/liftType";
+import { liftType, maxLiftType } from "@/types/liftType";
 import { getData, getMaxLiftByUser } from "@/actions/liftActions";
 import {
   Table,
@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const LiftTable = ({ title, logs }: { title: string; logs: liftType[] }) => {
+const LiftTable = ({ title, logs }: { title: string; logs: maxLiftType[] }) => {
   return (
     <div>
       <h2 className="text-2xl font-bold">{title}</h2>
@@ -42,7 +42,7 @@ const LiftTable = ({ title, logs }: { title: string; logs: liftType[] }) => {
 };
 
 const LiftLogs = async () => {
-  const data = await getMaxLiftByUser();
+  const data = (await getMaxLiftByUser()) as maxLiftType[];
 
   console.log("data", data);
 
