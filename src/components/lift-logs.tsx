@@ -1,4 +1,5 @@
 import { liftType } from "@/types/liftType";
+import { parseISO, format } from "date-fns";
 import { getData } from "@/actions/liftActions";
 import {
   Table,
@@ -13,28 +14,34 @@ const LiftTable = ({ title, logs }: { title: string; logs: liftType[] }) => {
   return (
     <div>
       <h2 className="text-2xl font-bold">{title}</h2>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Weight</TableHead>
-            <TableHead>Sets</TableHead>
-            <TableHead>Reps</TableHead>
-            <TableHead>Date</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {logs.map((log: any) => (
-            <TableRow key={log.id}>
-              <TableCell>{log.userFullName}</TableCell>
-              <TableCell className="font-medium">{`${log.weight} ${log.unit}`}</TableCell>
-              <TableCell>{log.sets}</TableCell>
-              <TableCell>{log.reps}</TableCell>
-              <TableCell>{log.date}</TableCell>
+      <div className="h-[318px] overflow-auto">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Rank</TableHead>
+              <TableHead>Name</TableHead>
+              <TableHead>Weight</TableHead>
+              <TableHead>Sets</TableHead>
+              <TableHead>Reps</TableHead>
+              <TableHead>Date</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {logs.map((log: any, rank) => (
+              <TableRow key={log.id}>
+                <TableCell>{`# ${rank + 1}`}</TableCell>
+                <TableCell>{log.userFullName}</TableCell>
+                <TableCell className="font-medium">{`${log.weight} ${log.unit}`}</TableCell>
+                <TableCell>{log.sets}</TableCell>
+                <TableCell>{log.reps}</TableCell>
+                <TableCell>
+                  {format(parseISO(log.date), "MMM dd, yy")}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 };

@@ -98,7 +98,6 @@ const AddLift = ({ createLift }: { createLift: any }) => {
                 <div className="flex-1 space-y-2">
                   <Label htmlFor="weight">Weight</Label>
                   <Input
-                    id="weight"
                     placeholder="Enter weight"
                     type="number"
                     name="weight"
@@ -121,19 +120,11 @@ const AddLift = ({ createLift }: { createLift: any }) => {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="sets">Sets</Label>
-              <Input
-                type="number"
-                name="sets"
-                className="w-full rounded border border-gray-200 px-2 py-1 text-black outline-none"
-              />
+              <Input placeholder="Enter sets" type="number" name="sets" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="reps">Reps</Label>
-              <Input
-                type="number"
-                name="reps"
-                className="w-full rounded border border-gray-200 px-2 py-1 text-black outline-none"
-              />
+              <Input placeholder="Enter reps" type="number" name="reps" />
             </div>
           </div>
           <SubmitFormButton />

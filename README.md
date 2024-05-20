@@ -13,8 +13,11 @@ TODO:
 [x] Improve the design of the lift list
 [x] Display data by lifts in the database
 [x] Group lifts by the lift type
-[ ] Add a rank to the table
-[ ] show a max of 5 records per table and scroll after that
+[x] Add a rank to the table
+[x] show a max of 5 records per table and scroll after that
+[x] Improve the date formatting
+[ ] Deploy so that other users can enter their information
+[ ] Update the table to be a Data Table instead of the basic Shadcn table
 [ ] Update the Top Nav
 [ ] Allow users to enter the age
 [ ] Allow users to view only their lift logs
