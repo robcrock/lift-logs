@@ -14,7 +14,7 @@ export const getData = async () => {
 
 export const getMaxLiftByUser = async () => {
   const calculateTotalVolumn = (lift: liftType) => {
-    return sql`SUM(${lift.reps} * ${lift.sets} * ${lift.unit === "kg" ? lift.weight * 2.20462 : lift.weight})`;
+    return sql`SUM(${lift.reps} * ${lift.sets} * ${lift.weight}) DESC`;
   };
 
   const data = await db
@@ -22,7 +22,7 @@ export const getMaxLiftByUser = async () => {
       userId: lift.userId,
       userFullName: lift.userFullName,
       lift: lift.lift,
-      weight: sql`MAX(${lift.weight})`,
+      weight: sql`ROUND(MAX(${lift.weight}))`,
       reps: lift.reps,
       sets: lift.sets,
       totalVolume: calculateTotalVolumn(lift),
@@ -39,6 +39,11 @@ export const addLift = async (date: string, formData: FormData) => {
 
   console.log("formData", formData);
 
+  const convertedWeight =
+    formData.get("unit") === "kg"
+      ? Number(formData.get("weight")) * 2.20462
+      : Number(formData.get("weight"));
+
   const values: liftType = {
     userId: user?.id as string,
     userFullName: user?.fullName as string,
@@ -46,7 +51,7 @@ export const addLift = async (date: string, formData: FormData) => {
     date,
     sets: formData.get("sets") as string,
     reps: formData.get("reps") as string,
-    weight: formData.get("weight") as string,
+    weight: convertedWeight as unknown as string,
     unit: formData.get("unit") as string,
   };
 
