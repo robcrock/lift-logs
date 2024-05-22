@@ -1,5 +1,5 @@
 import { maxLiftType } from "@/types/liftType";
-import { getMaxWeightByUser } from "@/actions/liftActions";
+import { getMaxWeightByUser } from "@/actions/lift-actions";
 import {
   Table,
   TableBody,
@@ -43,8 +43,6 @@ const LiftTable = ({ title, logs }: { title: string; logs: maxLiftType[] }) => {
 
 const LiftLogs = async () => {
   const data = (await getMaxWeightByUser()) as maxLiftType[];
-
-  console.log("data", data);
 
   return (
     <div className="space-y-6">

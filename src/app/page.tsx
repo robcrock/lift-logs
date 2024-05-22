@@ -1,16 +1,16 @@
-import { addLift, getData } from "@/actions/liftActions";
+import { addLift, getData } from "@/actions/lift-actions";
 import AddLiftForm from "@/components/form/add-lift-form";
 import LiftLogs from "@/components/lift-logs";
+import { toUTCDate } from "@/lib/toUTCDate";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const createLift = async (date: string, formData: FormData) => {
+  const createLift = async (data: any) => {
     "use server";
-    console.log("date", date);
-    console.log("formData", formData);
-    await addLift(date, formData);
+    const utcDate = toUTCDate(data.date);
+    await addLift({ ...data, date: utcDate });
   };
 
   return (

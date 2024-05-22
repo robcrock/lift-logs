@@ -3,9 +3,10 @@
 import { revalidatePath } from "next/cache";
 import db from "@/db/drizzle";
 import { lift } from "@/db/schema";
-import { liftType, maxLiftType } from "@/types/liftType";
+import { liftType } from "@/types/liftType";
 import { currentUser } from "@clerk/nextjs/server";
 import { sql, desc } from "drizzle-orm";
+import { AddFormFields } from "@/components/form/add-lift-form";
 
 export const getData = async () => {
   const data = await db.select().from(lift);
@@ -29,25 +30,27 @@ export const getMaxWeightByUser = async () => {
   return data;
 };
 
-export const addLift = async (date: string, formData: FormData) => {
+export const addLift = async (data: AddFormFields) => {
   const user = await currentUser();
 
-  console.log("formData", formData);
+  const { date, lift: liftData, sets, reps, weight, unit } = data;
+
+  console.log("data", data);
 
   const convertedWeight =
-    formData.get("unit") === "kg"
-      ? Number(formData.get("weight")) * 2.20462
-      : Number(formData.get("weight"));
+    unit === "kg" ? Number(weight) * 2.20462 : Number(weight);
+
+  if (!user) return null;
 
   const values: liftType = {
-    userId: user?.id as string,
-    userFullName: user?.fullName as string,
-    lift: formData.get("lift") as string,
-    date,
-    sets: formData.get("sets") as string,
-    reps: formData.get("reps") as string,
-    weight: convertedWeight as unknown as string,
-    unit: formData.get("unit") as string,
+    userId: user.id,
+    userFullName: user.fullName || "",
+    lift: liftData,
+    date: String(date),
+    sets: String(sets),
+    reps: String(reps),
+    weight: String(convertedWeight),
+    unit: unit,
   };
 
   await db.insert(lift).values(values);

@@ -20,13 +20,14 @@ TODO:
 [x] Drop the date column from the Table
 [x] Display only the top logs by lift, user, reps, sets
 [x] Fix the ordering issue
-[ ] Delete dummy data
-[ ] Update lift selector
-[ ] Fix TypeScript errors
+[x] Delete dummy data
+[x] Implement the Shadcn Form component
+[x] Update lift selector
+[ ] Prevent the system styles from effecting the UI (fix it to dark mode)
+[ ] Update the Top Nav
 [ ] Review Drizzle Docs
 [ ] Update the table to be a Data Table instead of the basic Shadcn table
-[ ] Make it dark mode
-[ ] Update the Top Nav
+[ ] Fix TypeScript errors
 [ ] Allow users to enter the age
 [ ] Allow users to view only their lift logs
 [ ] Add charts for their logs
