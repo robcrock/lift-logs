@@ -26,8 +26,9 @@ TODO:
 [x] Update the Top Nav to work on Mobile
 [x] Create My Lifts page
 [x] Fix TypeScript errors and improve definitions
-[ ] Prevent the system styles from effecting the UI (fix it to dark mode)
 [ ] Put the form in a drawer to show and hide it
+[ ] Make the add lift available in both pages.
+[ ] Prevent the system styles from effecting the UI (fix it to dark mode)
 [ ] Review Drizzle Docs
 [ ] Update the table to be a Data Table instead of the basic Shadcn table
 [ ] Allow users to enter the age
