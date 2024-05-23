@@ -1,14 +1,13 @@
-export type maxLiftType = {
+export type TLiftLog = {
   userId: string;
   userFullName: string;
   lift: string;
-  maxWeight: string;
-  weight: string;
+  weight: unknown;
   reps: string;
   sets: string;
 };
 
-export type liftType = {
+export type TLiftType = {
   id?: string;
   userId: string;
   userFullName: string;

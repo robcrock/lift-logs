@@ -1,5 +1,4 @@
-import { maxLiftType } from "@/types/liftType";
-import { getMaxWeightByUser } from "@/actions/lift-actions";
+import type { TLiftLog } from "@/types/liftType";
 import {
   Table,
   TableBody,
@@ -9,7 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const LiftTable = ({ title, logs }: { title: string; logs: maxLiftType[] }) => {
+const LiftTable = ({ title, logs }: { title: string; logs: TLiftLog[] }) => {
   return (
     <div>
       <h2 className="text-2xl font-bold">{title}</h2>
@@ -19,7 +18,7 @@ const LiftTable = ({ title, logs }: { title: string; logs: maxLiftType[] }) => {
             <TableRow>
               <TableHead>Rank</TableHead>
               <TableHead>Name</TableHead>
-              <TableHead>Max Weight</TableHead>
+              <TableHead>Weight</TableHead>
               <TableHead>Reps</TableHead>
               <TableHead>Sets</TableHead>
             </TableRow>
@@ -29,7 +28,7 @@ const LiftTable = ({ title, logs }: { title: string; logs: maxLiftType[] }) => {
               <TableRow key={log.id}>
                 <TableCell>{`# ${rank + 1}`}</TableCell>
                 <TableCell>{log.userFullName}</TableCell>
-                <TableCell className="text-end font-medium">{`${log.maxWeight} lbs`}</TableCell>
+                <TableCell className="text-end font-medium">{`${log.weight} lbs`}</TableCell>
                 <TableCell className="text-end">{log.reps}</TableCell>
                 <TableCell className="text-end">{log.sets}</TableCell>
               </TableRow>
@@ -41,26 +40,24 @@ const LiftTable = ({ title, logs }: { title: string; logs: maxLiftType[] }) => {
   );
 };
 
-const LiftLogs = async () => {
-  const data = (await getMaxWeightByUser()) as maxLiftType[];
-
+const LiftLogs = async ({ logs }: { logs: TLiftLog[] }) => {
   return (
     <div className="space-y-6">
       <LiftTable
         title="Deadlift"
-        logs={data.filter(({ lift }) => lift === "deadlift")}
+        logs={logs.filter(({ lift }) => lift === "deadlift")}
       />
       <LiftTable
         title="Squat"
-        logs={data.filter(({ lift }) => lift === "squat")}
+        logs={logs.filter(({ lift }) => lift === "squat")}
       />
       <LiftTable
         title="Bench Press"
-        logs={data.filter(({ lift }) => lift === "bench")}
+        logs={logs.filter(({ lift }) => lift === "bench")}
       />
       <LiftTable
         title="Overhead Press"
-        logs={data.filter(({ lift }) => lift === "press")}
+        logs={logs.filter(({ lift }) => lift === "press")}
       />
     </div>
   );

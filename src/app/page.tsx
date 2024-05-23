@@ -1,12 +1,15 @@
-import { addLift, getData } from "@/actions/lift-actions";
+import { addLift, getMaxWeightByUser } from "@/actions/lift-actions";
 import AddLiftForm from "@/components/form/add-lift-form";
 import LiftLogs from "@/components/lift-logs";
 import { toUTCDate } from "@/lib/toUTCDate";
+import type { TLiftLog } from "@/types/liftType";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
+  const data = await getMaxWeightByUser();
+
   const createLift = async (data: any) => {
     "use server";
     const utcDate = toUTCDate(data.date);
@@ -27,7 +30,7 @@ export default async function Home() {
         </SignedOut>
         <SignedIn>
           <AddLiftForm createLift={createLift} />
-          <LiftLogs />
+          {data && <LiftLogs logs={data} />}
         </SignedIn>
       </div>
     </div>

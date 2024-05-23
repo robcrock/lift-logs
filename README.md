@@ -23,11 +23,13 @@ TODO:
 [x] Delete dummy data
 [x] Implement the Shadcn Form component
 [x] Update lift selector
+[x] Update the Top Nav to work on Mobile
+[x] Create My Lifts page
+[x] Fix TypeScript errors and improve definitions
 [ ] Prevent the system styles from effecting the UI (fix it to dark mode)
-[ ] Update the Top Nav
+[ ] Put the form in a drawer to show and hide it
 [ ] Review Drizzle Docs
 [ ] Update the table to be a Data Table instead of the basic Shadcn table
-[ ] Fix TypeScript errors
 [ ] Allow users to enter the age
 [ ] Allow users to view only their lift logs
 [ ] Add charts for their logs

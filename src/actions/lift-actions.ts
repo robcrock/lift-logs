@@ -3,9 +3,9 @@
 import { revalidatePath } from "next/cache";
 import db from "@/db/drizzle";
 import { lift } from "@/db/schema";
-import { liftType } from "@/types/liftType";
+import type { TLiftLog, TLiftType } from "@/types/liftType";
 import { currentUser } from "@clerk/nextjs/server";
-import { sql, desc } from "drizzle-orm";
+import { sql, desc, eq } from "drizzle-orm";
 import { AddFormFields } from "@/components/form/add-lift-form";
 
 export const getData = async () => {
@@ -13,13 +13,32 @@ export const getData = async () => {
   return data;
 };
 
-export const getMaxWeightByUser = async () => {
+export const getLogsByUser = async (): Promise<TLiftLog[] | null> => {
+  const user = await currentUser();
+
+  if (!user) return null;
+
   const data = await db
     .select({
       userId: lift.userId,
       userFullName: lift.userFullName,
       lift: lift.lift,
-      maxWeight: sql`ROUND(MAX(${lift.weight}))`,
+      weight: lift.weight,
+      reps: lift.reps,
+      sets: lift.sets,
+    })
+    .from(lift)
+    .where(eq(lift.userId, user.id));
+  return data;
+};
+
+export const getMaxWeightByUser = async (): Promise<TLiftLog[] | null> => {
+  const data = await db
+    .select({
+      userId: lift.userId,
+      userFullName: lift.userFullName,
+      lift: lift.lift,
+      weight: sql`MAX(${lift.weight})`,
       reps: lift.reps,
       sets: lift.sets,
     })
@@ -42,7 +61,7 @@ export const addLift = async (data: AddFormFields) => {
 
   if (!user) return null;
 
-  const values: liftType = {
+  const values: TLiftType = {
     userId: user.id,
     userFullName: user.fullName || "",
     lift: liftData,
