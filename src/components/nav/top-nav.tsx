@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ModeToggle } from "../mode-toggle";
 
 export const TopNav = () => {
   const pathname = usePathname();
@@ -13,9 +14,8 @@ export const TopNav = () => {
       <nav className="flex flex-row gap-6 text-lg font-medium md:items-center md:text-sm lg:gap-6">
         <Link
           className={cn(
-            pathname === "/"
-              ? "font-bold text-gray-900"
-              : "text-gray-500 dark:text-gray-400",
+            pathname === "/" ? "dark:text-gray-400" : "text-gray-500",
+            "hover:text-gray-900 dark:hover:text-white",
           )}
           href="/"
         >
@@ -23,9 +23,8 @@ export const TopNav = () => {
         </Link>
         <Link
           className={cn(
-            pathname === "/my-logs"
-              ? "font-bold text-gray-900"
-              : "text-gray-500 dark:text-gray-400",
+            pathname === "/my-logs" ? "dark:text-gray-400" : "text-gray-500",
+            "hover:text-gray-900 dark:hover:text-white",
           )}
           href="/my-logs"
         >
@@ -41,6 +40,7 @@ export const TopNav = () => {
         <SignedIn>
           <UserButton />
         </SignedIn>
+        <ModeToggle />
       </div>
     </header>
   );
