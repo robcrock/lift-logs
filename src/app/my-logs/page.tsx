@@ -1,9 +1,7 @@
-import { getLogsByUser } from "@/actions/lift-actions";
-import LiftLogs from "@/components/lift-logs";
+import MyLiftLogs from "@/components/my-logs";
 import React from "react";
 
 export default async function MyLogs() {
-  const data = await getLogsByUser();
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8 md:px-6">
       <div className="space-y-6">
@@ -13,7 +11,7 @@ export default async function MyLogs() {
             View your personal lift logs and progress.
           </p>
         </div>
-        {data && <LiftLogs logs={data} />}
+        <MyLiftLogs />
       </div>
     </div>
   );

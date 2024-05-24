@@ -26,7 +26,12 @@ TODO:
 [x] Update the Top Nav to work on Mobile
 [x] Create My Lifts page
 [x] Fix TypeScript errors and improve definitions
+[x] Create different table types
+[x] Sort records by date
+[x] Format the date to friendlier string of text
+[x] Improve the column width by making the rank, reps, and set more narrow and giving the weight a min-width
 [ ] Put the form in a drawer to show and hide it
+[ ] Add a Toast to appear after users successfully add a lift
 [ ] Make the add lift available in both pages.
 [ ] Prevent the system styles from effecting the UI (fix it to dark mode)
 [ ] Review Drizzle Docs

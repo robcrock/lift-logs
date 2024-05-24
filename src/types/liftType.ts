@@ -1,3 +1,12 @@
+export type TMyLog = {
+  id: string;
+  date: string;
+  lift: string;
+  weight: unknown;
+  reps: string;
+  sets: string;
+};
+
 export type TLiftLog = {
   userId: string;
   userFullName: string;

@@ -3,33 +3,40 @@
 import { revalidatePath } from "next/cache";
 import db from "@/db/drizzle";
 import { lift } from "@/db/schema";
-import type { TLiftLog, TLiftType } from "@/types/liftType";
+import type { TLiftLog, TLiftType, TMyLog } from "@/types/liftType";
 import { currentUser } from "@clerk/nextjs/server";
 import { sql, desc, eq } from "drizzle-orm";
 import { AddFormFields } from "@/components/form/add-lift-form";
+import { format } from "date-fns";
+import { toFriendlyDate } from "@/lib/toFriendlyDate";
 
 export const getData = async () => {
   const data = await db.select().from(lift);
   return data;
 };
 
-export const getLogsByUser = async (): Promise<TLiftLog[] | null> => {
+export const getLogsByUser = async (): Promise<TMyLog[] | null> => {
   const user = await currentUser();
 
   if (!user) return null;
 
   const data = await db
     .select({
-      userId: lift.userId,
-      userFullName: lift.userFullName,
+      id: lift.id,
+      date: lift.date,
       lift: lift.lift,
       weight: lift.weight,
       reps: lift.reps,
       sets: lift.sets,
     })
     .from(lift)
-    .where(eq(lift.userId, user.id));
-  return data;
+    .where(eq(lift.userId, user.id))
+    .orderBy(desc(lift.date));
+
+  return data.map((log) => {
+    log.date = toFriendlyDate(log.date);
+    return log;
+  });
 };
 
 export const getMaxWeightByUser = async (): Promise<TLiftLog[] | null> => {

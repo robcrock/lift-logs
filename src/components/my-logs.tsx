@@ -1,22 +1,26 @@
-import type { TLiftLog } from "@/types/liftType";
-import { LiftLogsTable } from "./tables";
+import { MyLogsTable } from "./tables";
+import { getLogsByUser } from "@/actions/lift-actions";
 
-const LiftLogs = async ({ logs }: { logs: TLiftLog[] }) => {
+const MyLiftLogs = async () => {
+  const logs = await getLogsByUser();
+
+  if (!logs) return;
+
   return (
     <div className="space-y-6">
-      <LiftLogsTable
+      <MyLogsTable
         title="Deadlift"
         logs={logs.filter(({ lift }) => lift === "deadlift")}
       />
-      <LiftLogsTable
+      <MyLogsTable
         title="Squat"
         logs={logs.filter(({ lift }) => lift === "squat")}
       />
-      <LiftLogsTable
+      <MyLogsTable
         title="Bench Press"
         logs={logs.filter(({ lift }) => lift === "bench")}
       />
-      <LiftLogsTable
+      <MyLogsTable
         title="Overhead Press"
         logs={logs.filter(({ lift }) => lift === "press")}
       />
@@ -24,4 +28,4 @@ const LiftLogs = async ({ logs }: { logs: TLiftLog[] }) => {
   );
 };
 
-export default LiftLogs;
+export default MyLiftLogs;
