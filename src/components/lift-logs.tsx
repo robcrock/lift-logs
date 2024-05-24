@@ -3,7 +3,7 @@ import { LiftLogsTable } from "./tables";
 
 const LiftLogs = async ({ logs }: { logs: TLiftLog[] }) => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <LiftLogsTable
         title="Deadlift"
         logs={logs.filter(({ lift }) => lift === "deadlift")}

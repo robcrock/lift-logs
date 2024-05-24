@@ -18,12 +18,12 @@ export const LiftLogsTable = ({
 }) => {
   return (
     <div>
-      <h2 className="text-2xl font-bold">{title}</h2>
-      <div className="h-[318px] overflow-auto">
+      <h2 className="font-bold lg:text-2xl">{title}</h2>
+      <div className="h-[240px] min-h-[240px] overflow-auto">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-14">Rank</TableHead>
+              <TableHead className="w-16 max-w-12">Rank</TableHead>
               <TableHead>Name</TableHead>
               <TableHead className="min-w-20">Weight</TableHead>
               <TableHead className="w-14">Reps</TableHead>
@@ -35,9 +35,9 @@ export const LiftLogsTable = ({
               <TableRow key={log.id}>
                 <TableCell className="text-right">
                   <span className="text-xs text-muted-foreground">#</span>
-                  {` ${rank + 1}`}
+                  {`${rank + 1}`}
                 </TableCell>
-                <TableCell>{log.userFullName}</TableCell>
+                <TableCell>{`${log.userFullName.split(" ")[0]} ${log.userFullName.split(" ")[1][0]}`}</TableCell>
                 <TableCell className="text-end font-medium">
                   {`${log.weight} `}
                   <span className="text-xs text-muted-foreground">lbs</span>

@@ -99,7 +99,7 @@ const AddLift = ({ createLift }: { createLift: any }) => {
             className="grid gap-4"
           >
             {/* DATE */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="xs:grid-cols-1 grid gap-4 lg:grid-cols-2">
               <FormField
                 control={form.control}
                 name="date"
@@ -119,7 +119,7 @@ const AddLift = ({ createLift }: { createLift: any }) => {
                             >
                               <CalendarIcon className="mr-2 h-4 w-4" />
                               {date ? (
-                                format(date, "PPP")
+                                format(date, "MMM do, yy")
                               ) : (
                                 <span>Pick a date</span>
                               )}

@@ -30,6 +30,11 @@ TODO:
 [x] Sort records by date
 [x] Format the date to friendlier string of text
 [x] Improve the column width by making the rank, reps, and set more narrow and giving the weight a min-width
+[x] Abbreviate the date selection input
+[x] Make date input full width on mobile
+[x] Align dates to the right in My Logs
+[x] Display tops 5
+[x] Improve column size
 [ ] Put the form in a drawer to show and hide it
 [ ] Add a Toast to appear after users successfully add a lift
 [ ] Make the add lift available in both pages.

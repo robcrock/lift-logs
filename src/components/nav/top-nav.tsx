@@ -31,9 +31,13 @@ export const TopNav = () => {
           My Logs
         </Link>
       </nav>
-      <div className="ml-auto flex gap-2">
+      <div className="ml-auto flex items-center gap-4">
         <SignedOut>
-          <div className="text-[#2e026d]">
+          <div
+            className={
+              "hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+            }
+          >
             <SignInButton />
           </div>
         </SignedOut>

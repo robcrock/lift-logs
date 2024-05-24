@@ -19,7 +19,7 @@ export const MyLogsTable = async ({
   return (
     <div>
       <h2 className="text-2xl font-bold">{title}</h2>
-      <div className="h-[318px] overflow-auto">
+      <div className="h-[240px] min-h-[240px] overflow-auto">
         <Table>
           <TableHeader>
             <TableRow>
@@ -32,7 +32,7 @@ export const MyLogsTable = async ({
           <TableBody>
             {logs.map((log: TMyLog) => (
               <TableRow key={log.id}>
-                <TableCell>{log.date}</TableCell>
+                <TableCell className="text-right">{log.date}</TableCell>
                 <TableCell className="text-end font-medium">
                   {`${log.weight} `}
                   <span className="text-xs text-muted-foreground">lbs</span>

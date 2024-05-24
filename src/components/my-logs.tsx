@@ -7,7 +7,7 @@ const MyLiftLogs = async () => {
   if (!logs) return;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <MyLogsTable
         title="Deadlift"
         logs={logs.filter(({ lift }) => lift === "deadlift")}
