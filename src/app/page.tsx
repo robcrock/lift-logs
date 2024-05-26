@@ -1,6 +1,14 @@
 import { addLift, getMaxWeightByUser } from "@/actions/lift-actions";
 import AddLiftForm from "@/components/form/add-lift-form";
 import LiftLogs from "@/components/lift-logs";
+import { Button } from "@/components/ui/button";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { toUTCDate } from "@/lib/toUTCDate";
 import type { TLiftLog } from "@/types/liftType";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
@@ -29,7 +37,17 @@ export default async function Home() {
           <p className="text-lg text-white">Sign in to see the top lifters</p>
         </SignedOut>
         <SignedIn>
-          <AddLiftForm createLift={createLift} />
+          <Drawer>
+            <DrawerTrigger asChild>
+              <Button variant="outline">Log a New Lift</Button>
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader>
+                <DrawerTitle>Log a New Lift</DrawerTitle>
+              </DrawerHeader>
+              <AddLiftForm createLift={createLift} />
+            </DrawerContent>
+          </Drawer>
           {data && <LiftLogs logs={data} />}
         </SignedIn>
       </div>

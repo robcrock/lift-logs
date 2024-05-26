@@ -36,6 +36,7 @@ TODO:
 [x] Display tops 5
 [x] Improve column size
 [x] Add analytics
+[ ] Add Top Loader https://www.youtube.com/shorts/xYgB5pql2w8
 [ ] Put the form in a drawer to show and hide it
 [ ] Add a Toast to appear after users successfully add a lift
 [ ] Make the add lift available in both pages.
