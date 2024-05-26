@@ -30,6 +30,7 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
+import { toast } from "sonner";
 
 const SubmitFormButton = () => {
   const { pending } = useFormStatus();
@@ -85,6 +86,7 @@ const AddLift = ({ createLift }: { createLift: any }) => {
       sets,
       reps,
     });
+    toast.success("Lift entered 🥳");
   };
 
   return (

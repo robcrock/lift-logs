@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { TopNav } from "@/components/nav/top-nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           >
             <TopNav />
             {children}
+            <Toaster position="top-center" duration={2000} />
             <Analytics />
           </ThemeProvider>
         </body>
