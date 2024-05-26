@@ -36,10 +36,11 @@ TODO:
 [x] Display tops 5
 [x] Improve column size
 [x] Add analytics
-[ ] Add Top Loader https://www.youtube.com/shorts/xYgB5pql2w8
-[ ] Put the form in a drawer to show and hide it
+[x] Put the form in a drawer to show and hide it
+[x] Make the add lift available in both pages.
+[x] Improve how the add log button look in dark and light mode
 [ ] Add a Toast to appear after users successfully add a lift
-[ ] Make the add lift available in both pages.
+[ ] Add Top Loader https://www.youtube.com/shorts/xYgB5pql2w8
 [ ] Prevent the system styles from effecting the UI (fix it to dark mode)
 [ ] Review Drizzle Docs
 [ ] Update the table to be a Data Table instead of the basic Shadcn table

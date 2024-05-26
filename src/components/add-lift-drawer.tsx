@@ -27,10 +27,10 @@ export const AddLiftDrawer = async () => {
     <Drawer>
       <DrawerTrigger asChild>
         <Button
-          className="fixed bottom-8 right-8 z-50 h-10 w-10 rounded-full bg-primary p-3 text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          className="fixed bottom-8 right-8 z-50 h-10 w-10 rounded-full bg-primary p-2 text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 [&_svg]:hover:h-10 [&_svg]:hover:w-10"
           variant="outline"
         >
-          <PlusIcon className="h-5 w-5" />
+          <PlusIcon className="h-5 w-5 text-white dark:text-slate-900" />
         </Button>
       </DrawerTrigger>
       <DrawerContent>
