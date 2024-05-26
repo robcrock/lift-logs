@@ -1,3 +1,4 @@
+import { AddLiftDrawer } from "@/components/add-lift-drawer";
 import MyLiftLogs from "@/components/my-logs";
 import React from "react";
 
@@ -12,6 +13,7 @@ export default async function MyLogs() {
           </p>
         </div>
         <MyLiftLogs />
+        <AddLiftDrawer />
       </div>
     </div>
   );

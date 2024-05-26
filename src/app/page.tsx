@@ -1,28 +1,12 @@
-import { addLift, getMaxWeightByUser } from "@/actions/lift-actions";
-import AddLiftForm from "@/components/form/add-lift-form";
+import { getMaxWeightByUser } from "@/actions/lift-actions";
+import { AddLiftDrawer } from "@/components/add-lift-drawer";
 import LiftLogs from "@/components/lift-logs";
-import { Button } from "@/components/ui/button";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { toUTCDate } from "@/lib/toUTCDate";
-import type { TLiftLog } from "@/types/liftType";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const data = await getMaxWeightByUser();
-
-  const createLift = async (data: any) => {
-    "use server";
-    const utcDate = toUTCDate(data.date);
-    await addLift({ ...data, date: utcDate });
-  };
 
   return (
     <div key="1" className="container mx-auto max-w-4xl px-4 py-8 md:px-6">
@@ -37,18 +21,8 @@ export default async function Home() {
           <p className="text-lg text-white">Sign in to see the top lifters</p>
         </SignedOut>
         <SignedIn>
-          <Drawer>
-            <DrawerTrigger asChild>
-              <Button variant="outline">Log a New Lift</Button>
-            </DrawerTrigger>
-            <DrawerContent>
-              <DrawerHeader>
-                <DrawerTitle>Log a New Lift</DrawerTitle>
-              </DrawerHeader>
-              <AddLiftForm createLift={createLift} />
-            </DrawerContent>
-          </Drawer>
           {data && <LiftLogs logs={data} />}
+          <AddLiftDrawer />
         </SignedIn>
       </div>
     </div>
