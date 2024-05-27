@@ -86,7 +86,7 @@ const AddLift = ({ createLift }: { createLift: any }) => {
       sets,
       reps,
     });
-    toast.success("Lift entered 🥳");
+    toast.success("Lift entered 🎉");
   };
 
   return (

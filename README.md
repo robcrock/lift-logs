@@ -41,12 +41,12 @@ TODO:
 [x] Improve how the add log button look in dark and light mode
 [x] Add shadow to the button
 [x] Add a Toast to appear after users successfully add a lift
+[x] Update the table to be a Data Table instead of the basic Shadcn table
 [ ] Put the page links in a hamburger menu on mobile
 [ ] Add Top Loader https://www.youtube.com/shorts/xYgB5pql2w8
 [ ] Prevent the system styles from effecting the UI (fix it to dark mode)
 [ ] Add a tooltip to the add log button
 [ ] Review Drizzle Docs
-[ ] Update the table to be a Data Table instead of the basic Shadcn table
 [ ] Allow users to enter the age
 [ ] Allow users to view only their lift logs
 [ ] Add charts for their logs

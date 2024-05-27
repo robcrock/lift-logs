@@ -2,11 +2,12 @@ import { getMaxWeightByUser } from "@/actions/lift-actions";
 import { AddLiftDrawer } from "@/components/add-lift-drawer";
 import LiftLogs from "@/components/lift-logs";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { TLiftLog } from "@/types/liftType";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const data = await getMaxWeightByUser();
+  const data = (await getMaxWeightByUser()) as TLiftLog[];
 
   return (
     <div key="1" className="container mx-auto max-w-4xl px-4 py-8 md:px-6">

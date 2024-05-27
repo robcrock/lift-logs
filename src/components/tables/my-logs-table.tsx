@@ -1,11 +1,5 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { columns } from "@/app/my-logs/columns";
+import { DataTable } from "@/app/my-logs/data-table";
 
 import { TMyLog } from "@/types/liftType";
 
@@ -17,32 +11,10 @@ export const MyLogsTable = async ({
   logs: TMyLog[];
 }) => {
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <h2 className="text-2xl font-bold">{title}</h2>
-      <div className="h-[240px] min-h-[240px] overflow-auto">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Date</TableHead>
-              <TableHead className="min-w-20">Weight</TableHead>
-              <TableHead className="w-14">Reps</TableHead>
-              <TableHead className="w-14">Sets</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {logs.map((log: TMyLog) => (
-              <TableRow key={log.id}>
-                <TableCell className="text-right">{log.date}</TableCell>
-                <TableCell className="text-end font-medium">
-                  {`${log.weight} `}
-                  <span className="text-xs text-muted-foreground">lbs</span>
-                </TableCell>
-                <TableCell className="text-end">{log.reps}</TableCell>
-                <TableCell className="text-end">{log.sets}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+      <div className="h-[230px] min-h-[230px] overflow-auto">
+        <DataTable columns={columns} data={logs} />
       </div>
     </div>
   );
