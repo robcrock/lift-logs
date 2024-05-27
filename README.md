@@ -51,3 +51,4 @@ TODO:
 [ ] Allow users to view only their lift logs
 [ ] Add charts for their logs
 [ ] Add filters to the Logs so users can see how they compare to others
+[ ] Allow users to edit individual lifts
