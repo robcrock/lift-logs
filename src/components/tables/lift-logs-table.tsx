@@ -13,7 +13,7 @@ export const LiftLogsTable = ({
   return (
     <div className="flex flex-col gap-2">
       <h2 className="font-bold lg:text-2xl">{title}</h2>
-      <div className="h-[230px] min-h-[230px] overflow-auto">
+      <div className="h-[234px] min-h-[234px] overflow-auto">
         <DataTable columns={columns} data={logs} />
       </div>
     </div>

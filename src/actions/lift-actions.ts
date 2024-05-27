@@ -7,13 +7,7 @@ import type { TLiftLog, TLiftType, TMyLog } from "@/types/liftType";
 import { currentUser } from "@clerk/nextjs/server";
 import { sql, desc, eq } from "drizzle-orm";
 import { AddFormFields } from "@/components/form/add-lift-form";
-import { format } from "date-fns";
 import { toFriendlyDate } from "@/lib/toFriendlyDate";
-
-export const getData = async () => {
-  const data = await db.select().from(lift);
-  return data;
-};
 
 export const getLogsByUser = async (): Promise<TMyLog[] | null> => {
   const user = await currentUser();
@@ -39,19 +33,47 @@ export const getLogsByUser = async (): Promise<TMyLog[] | null> => {
   });
 };
 
+// Define the function to get the max weight by user
 export const getMaxWeightByUser = async (): Promise<TLiftLog[] | null> => {
-  const data = await db
+  // Define the first part of the query to get the max weight by user
+  const maxWeightByUser = db
     .select({
+      userId: lift.userId,
+      lift: lift.lift,
+      maxWeight: sql`MAX(${lift.weight})`.as("maxWeight"),
+    })
+    .from(lift)
+    .groupBy(lift.userId, lift.lift)
+    .as("maxWeightByUser");
+
+  // Define the second part of the query to get the max weight details
+  const maxWeightDetails = db
+    .select({
+      id: lift.id,
       userId: lift.userId,
       userFullName: lift.userFullName,
       lift: lift.lift,
-      weight: sql`MAX(${lift.weight})`,
+      maxWeight: maxWeightByUser.maxWeight,
       reps: lift.reps,
       sets: lift.sets,
     })
     .from(lift)
-    .groupBy(lift.userId, lift.userFullName, lift.lift, lift.sets, lift.reps)
-    .orderBy(desc(sql`MAX(${lift.weight})`), desc(lift.reps));
+    .innerJoin(
+      maxWeightByUser,
+      sql`${maxWeightByUser.lift} = ${lift.lift} 
+      AND ${maxWeightByUser.maxWeight} = ${lift.weight} 
+      AND ${maxWeightByUser.userId} = ${lift.userId}`,
+    )
+    .as("maxWeightDetails");
+
+  // Perform the final selection
+  const finalQuery = db
+    .select()
+    .from(maxWeightDetails)
+    .orderBy(maxWeightDetails.lift, desc(maxWeightByUser.maxWeight));
+
+  // Execute the query
+  const data = await finalQuery;
 
   return data;
 };
