@@ -13,12 +13,12 @@ export const columns: ColumnDef<TLiftLog>[] = [
     header: "Name",
   },
   {
-    accessorKey: "maxWeight",
-    header: "Max Lbs.",
+    accessorKey: "weight",
+    header: "Max Wt.",
   },
   {
     accessorKey: "reps",
-    header: "Reps",
+    header: "Max Reps",
   },
   {
     accessorKey: "sets",

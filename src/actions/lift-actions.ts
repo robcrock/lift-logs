@@ -35,42 +35,44 @@ export const getLogsByUser = async (): Promise<TMyLog[] | null> => {
 
 // Define the function to get the max weight by user
 export const getMaxWeightByUser = async (): Promise<TLiftLog[] | null> => {
-  // Define the first part of the query to get the max weight by user
-  const maxWeightByUser = db
+  // Define the CTE for ranking the lifts
+  const rankedLifts = db
     .select({
-      userId: lift.userId,
-      lift: lift.lift,
-      maxWeight: sql`MAX(${lift.weight})`.as("maxWeight"),
-    })
-    .from(lift)
-    .groupBy(lift.userId, lift.lift)
-    .as("maxWeightByUser");
-
-  // Define the second part of the query to get the max weight details
-  const maxWeightDetails = db
-    .select({
-      id: lift.id,
       userId: lift.userId,
       userFullName: lift.userFullName,
       lift: lift.lift,
-      maxWeight: maxWeightByUser.maxWeight,
-      reps: lift.reps,
+      date: lift.date,
       sets: lift.sets,
+      reps: lift.reps,
+      weight: lift.weight,
+      unit: lift.unit,
+      rank: sql`ROW_NUMBER() OVER (
+        PARTITION BY ${lift.userId}, ${lift.lift}
+        ORDER BY ${lift.weight} DESC, ${lift.reps} DESC, ${lift.sets} DESC
+      )`.as("rank"),
     })
     .from(lift)
-    .innerJoin(
-      maxWeightByUser,
-      sql`${maxWeightByUser.lift} = ${lift.lift} 
-      AND ${maxWeightByUser.maxWeight} = ${lift.weight} 
-      AND ${maxWeightByUser.userId} = ${lift.userId}`,
-    )
-    .as("maxWeightDetails");
+    .as("rankedLifts");
 
-  // Perform the final selection
+  // Define the final query to select the top-ranked lifts
   const finalQuery = db
-    .select()
-    .from(maxWeightDetails)
-    .orderBy(maxWeightDetails.lift, desc(maxWeightByUser.maxWeight));
+    .select({
+      userId: rankedLifts.userId,
+      userFullName: rankedLifts.userFullName,
+      lift: rankedLifts.lift,
+      date: rankedLifts.date,
+      sets: rankedLifts.sets,
+      reps: rankedLifts.reps,
+      weight: rankedLifts.weight,
+      unit: rankedLifts.unit,
+    })
+    .from(rankedLifts)
+    .where(sql`${rankedLifts.rank} = 1`)
+    .orderBy(
+      desc(rankedLifts.weight),
+      desc(rankedLifts.reps),
+      desc(rankedLifts.sets),
+    );
 
   // Execute the query
   const data = await finalQuery;

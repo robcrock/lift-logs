@@ -11,9 +11,11 @@ export type TLiftLog = {
   userId: string;
   userFullName: string;
   lift: string;
-  maxWeight: unknown;
-  reps: string;
+  date: string;
   sets: string;
+  reps: string;
+  weight: string;
+  unit: string;
 };
 
 export type TLiftType = {
