@@ -36,7 +36,7 @@ export const BarChart = ({ data }: { data: TMyLog[] }) => {
   };
   return (
     <ResponsiveContainer width={"100%"} height={234}>
-      {barChartData.length <= 5 ? (
+      {barChartData.length < 5 ? (
         <div>You need at least 5 logs for a chart.</div>
       ) : (
         <ReChartBarChart data={barChartData}>
