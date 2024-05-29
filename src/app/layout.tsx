@@ -6,6 +6,7 @@ import { TopNav } from "@/components/nav/top-nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/sonner";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,6 +14,11 @@ export const metadata: Metadata = {
   title: "Lift Logs",
   description: "Track your progress and personal bests.",
 };
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+></meta>;
 
 export default function RootLayout({
   children,
@@ -22,6 +28,12 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+          />
+        </Head>
         <body className={inter.className}>
           <ThemeProvider
             attribute="class"
