@@ -1,6 +1,7 @@
 "use client";
 
 import { convertFriendlyToDate } from "@/lib/convertFriendlyToDate";
+import { TMyLog } from "@/types/liftType";
 import { format } from "date-fns";
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
@@ -14,7 +15,7 @@ import {
 
 type Props = {};
 
-export const BarChart = ({ data }: { data: any }) => {
+export const BarChart = ({ data }: { data: TMyLog[] }) => {
   const theme = useTheme();
   const [fill, setFill] = useState("#000");
 
