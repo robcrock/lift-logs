@@ -43,10 +43,10 @@ TODO:
 [x] Add a Toast to appear after users successfully add a lift
 [x] Update the table to be a Data Table instead of the basic Shadcn table
 [x] Add charts for their logs
+[x] Reveal charts after 5 lifts have been logged
 [ ] Put the page links in a hamburger menu on mobile
 [ ] Add Top Loader https://www.youtube.com/shorts/xYgB5pql2w8
 [ ] Prevent the system styles from effecting the UI (fix it to dark mode)
-[ ] Add a tooltip to the add log button
 [ ] Review Drizzle Docs
 [ ] Allow users to enter the age
 [ ] Allow users to view only their lift logs
@@ -54,4 +54,4 @@ TODO:
 [ ] Allow users to edit individual lifts
 [ ] Add random unicorns
 [ ] Add a cancel button to the drawer
-[ ] Reveal charts after 5 lifts have been logged
+[ ] Add a tooltip to the add log button
