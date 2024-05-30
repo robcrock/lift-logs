@@ -4,14 +4,15 @@ import { revalidatePath } from "next/cache";
 import db from "@/db/drizzle";
 import { lift } from "@/db/schema";
 import type { TLiftLog, TLiftType, TMyLog } from "@/types/liftType";
-import { currentUser } from "@clerk/nextjs/server";
-import { sql, desc, eq } from "drizzle-orm";
+import { User, currentUser } from "@clerk/nextjs/server";
+import { and, sql, desc, eq, like } from "drizzle-orm";
 import { AddFormFields } from "@/components/form/add-lift-form";
 import { toFriendlyDate } from "@/lib/toFriendlyDate";
 
-export const getLogsByUser = async (): Promise<TMyLog[] | null> => {
-  const user = await currentUser();
-
+export const getLogsByUser = async (
+  user: User | null,
+  liftType: string,
+): Promise<TMyLog[] | null> => {
   if (!user) return null;
 
   const data = await db
@@ -24,7 +25,7 @@ export const getLogsByUser = async (): Promise<TMyLog[] | null> => {
       sets: lift.sets,
     })
     .from(lift)
-    .where(eq(lift.userId, user.id))
+    .where(and(eq(lift.userId, user.id), like(lift.lift, `${liftType}`)))
     .orderBy(desc(lift.date));
 
   return data.map((log) => {
@@ -84,8 +85,6 @@ export const addLift = async (data: AddFormFields) => {
   const user = await currentUser();
 
   const { date, lift: liftData, sets, reps, weight, unit } = data;
-
-  console.log("data", data);
 
   const convertedWeight =
     unit === "kg" ? Number(weight) * 2.20462 : Number(weight);

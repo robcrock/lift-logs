@@ -76,7 +76,7 @@ const AddLift = ({ createLift }: { createLift: any }) => {
 
   const handleSubmit = (values: AddFormFields) => {
     const { date, lift, weight, unit, sets, reps } = values;
-    console.log("values", { values });
+
     form.reset();
     createLift({
       date,

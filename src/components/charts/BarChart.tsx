@@ -28,7 +28,11 @@ export const BarChart = ({ data }: { data: TMyLog[] }) => {
     .map((elem: any) => {
       return { date: elem.date, weight: Number(elem.weight) };
     })
-    .sort((a, b) => a.weight - b.weight);
+    .sort((a, b) => {
+      const aDate = Number(convertFriendlyToDate(a.date));
+      const bDate = Number(convertFriendlyToDate(b.date));
+      return aDate - bDate;
+    });
 
   const formatXAxis = (tickItem: string) => {
     const d = convertFriendlyToDate(tickItem);
@@ -48,12 +52,7 @@ export const BarChart = ({ data }: { data: TMyLog[] }) => {
             fontSize={12}
             tickFormatter={formatXAxis}
           />
-          <YAxis
-            tickLine={false}
-            axisLine={false}
-            stroke="#888"
-            fontSize={12}
-          />
+          <YAxis hide={true} />
           <Bar dataKey={"weight"} radius={[4, 4, 0, 0]} fill={fill} />
         </ReChartBarChart>
       )}

@@ -1,5 +1,6 @@
 import { AddLiftDrawer } from "@/components/add-lift-drawer";
-import MyLiftLogs from "@/components/my-logs";
+import LiftTabs from "@/components/lift-tabs";
+import { MyLogsTable } from "@/components/tables";
 import React from "react";
 
 export default async function MyLogs() {
@@ -12,7 +13,12 @@ export default async function MyLogs() {
             View your personal lift logs and progress.
           </p>
         </div>
-        <MyLiftLogs />
+        <LiftTabs
+          tableOne={<MyLogsTable title="Bench Press" liftType="bench" />}
+          tableTwo={<MyLogsTable title="Overhead Press" liftType="press" />}
+          tableThree={<MyLogsTable title="Deadlift" liftType="deadlift" />}
+          tableFour={<MyLogsTable title="Squat" liftType="squat" />}
+        />
         <AddLiftDrawer />
       </div>
     </div>

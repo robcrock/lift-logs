@@ -2,15 +2,21 @@ import { BarChart } from "@/components/charts";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 
-import { TMyLog } from "@/types/liftType";
+import { getLogsByUser } from "@/actions/lift-actions";
+import { currentUser } from "@clerk/nextjs/server";
 
 export const MyLogsTable = async ({
   title,
-  logs,
+  liftType,
 }: {
   title: string;
-  logs: TMyLog[];
+  liftType: string;
 }) => {
+  const user = await currentUser();
+  const logs = await getLogsByUser(user, liftType);
+
+  if (!logs) return null;
+
   return (
     <div className="flex flex-col gap-2">
       <h2 className="text-2xl font-bold">{title}</h2>
