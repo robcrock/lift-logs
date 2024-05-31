@@ -16,11 +16,19 @@ export default function LiftTabs({
 }) {
   return (
     <Tabs defaultValue="benchPress" className="flex w-full flex-col gap-4">
-      <TabsList className="grid w-full grid-cols-4">
-        <TabsTrigger value="benchPress">Bench Press</TabsTrigger>
-        <TabsTrigger value="overheadPress">Overhead Press</TabsTrigger>
-        <TabsTrigger value="deadlift">Deadlift</TabsTrigger>
-        <TabsTrigger value="squat">Squat</TabsTrigger>
+      <TabsList className="no-scrollbar flex gap-2 overflow-x-auto">
+        <TabsTrigger className="" value="benchPress">
+          Bench Press
+        </TabsTrigger>
+        <TabsTrigger className="" value="overheadPress">
+          Overhead Press
+        </TabsTrigger>
+        <TabsTrigger className="" value="deadlift">
+          Deadlift
+        </TabsTrigger>
+        <TabsTrigger className="" value="squat">
+          Squat
+        </TabsTrigger>
       </TabsList>
       <TabsContent value="benchPress">{tableOne}</TabsContent>
       <TabsContent value="overheadPress">{tableTwo}</TabsContent>
