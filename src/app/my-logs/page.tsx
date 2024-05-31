@@ -1,6 +1,6 @@
 import { AddLiftDrawer } from "@/components/add-lift-drawer";
 import LiftTabs from "@/components/lift-tabs";
-import { MyLogsTable } from "@/components/tables";
+import { LiftTabContent } from "@/components/lift-tab-content";
 import React from "react";
 
 export default async function MyLogs() {
@@ -14,10 +14,10 @@ export default async function MyLogs() {
           </p>
         </div>
         <LiftTabs
-          tableOne={<MyLogsTable title="Bench Press" liftType="bench" />}
-          tableTwo={<MyLogsTable title="Overhead Press" liftType="press" />}
-          tableThree={<MyLogsTable title="Deadlift" liftType="deadlift" />}
-          tableFour={<MyLogsTable title="Squat" liftType="squat" />}
+          tableOne={<LiftTabContent title="Bench Press" liftType="bench" />}
+          tableTwo={<LiftTabContent title="Overhead Press" liftType="press" />}
+          tableThree={<LiftTabContent title="Deadlift" liftType="deadlift" />}
+          tableFour={<LiftTabContent title="Squat" liftType="squat" />}
         />
         <AddLiftDrawer />
       </div>

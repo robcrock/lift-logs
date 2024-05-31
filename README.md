@@ -44,7 +44,15 @@ TODO:
 [x] Update the table to be a Data Table instead of the basic Shadcn table
 [x] Add charts for their logs
 [x] Reveal charts after 5 lifts have been logged
-[ ] Enabled horizontal scroll for the lift tabs and removed the scrollbar
+[x] Enabled horizontal scroll for the lift tabs and removed the scrollbar
+[ ] Create Card Stats
+
+- PR
+  - Label
+  - Icon
+  - Max Weight
+  - Description
+
 [ ] Put the page links in a hamburger menu on mobile
 [ ] Add Top Loader https://www.youtube.com/shorts/xYgB5pql2w8
 [ ] Prevent the system styles from effecting the UI (fix it to dark mode)

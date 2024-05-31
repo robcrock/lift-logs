@@ -1,1 +1,1 @@
-export * from "./my-logs-table";
+export * from "./data-table";
