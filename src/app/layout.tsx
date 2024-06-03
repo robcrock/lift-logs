@@ -3,10 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { TopNav } from "@/components/nav/top-nav";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "@/components/ui/sonner";
 import Head from "next/head";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,14 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, maximum-scale=1"
-          />
-        </Head>
+    <html lang="en">
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
+      </Head>
+      <ClerkProvider>
         <body className={inter.className}>
           <ThemeProvider
             attribute="class"
@@ -47,7 +47,7 @@ export default function RootLayout({
             <Analytics />
           </ThemeProvider>
         </body>
-      </html>
-    </ClerkProvider>
+      </ClerkProvider>
+    </html>
   );
 }

@@ -31,7 +31,7 @@ export const LiftTabContent = async ({
       <h2 className="text-2xl font-bold">{title}</h2>
       <section className="grid w-full grid-cols-1 gap-4 gap-x-8 transition-all sm:grid-cols-2 xl:grid-cols-4">
         <LiftStat
-          label={"Lifts Logs"}
+          label={"Lifts Logged"}
           icon={NotebookTextIcon}
           amount={String(logs.length)}
           description={"The Lifts You Have Logged"}

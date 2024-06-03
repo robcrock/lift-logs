@@ -1,3 +1,12 @@
+html {
+  visibility: hidden;
+}
+
+html.light,
+html.dark {
+  visibility: visible;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

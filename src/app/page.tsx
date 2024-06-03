@@ -22,7 +22,7 @@ export default async function Home() {
           <p className="text-lg text-white">Sign in to see the top lifters</p>
         </SignedOut>
         <SignedIn>
-          {data && <LiftLogs logs={data} />}
+          <LiftLogs logs={data} />
           <AddLiftDrawer />
         </SignedIn>
       </div>

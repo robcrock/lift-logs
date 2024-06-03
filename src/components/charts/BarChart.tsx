@@ -13,14 +13,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-type Props = {};
-
 export const BarChart = ({ data }: { data: TMyLog[] }) => {
-  const theme = useTheme();
+  const { theme } = useTheme();
   const [fill, setFill] = useState("#000");
 
   useEffect(() => {
-    const fill = theme.theme === "light" ? "black" : "white";
+    const fill = theme === "light" || theme === "system" ? "black" : "white";
     setFill(fill);
   }, [theme]);
 
