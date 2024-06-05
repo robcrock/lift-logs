@@ -14,7 +14,7 @@ export const TopNav = () => {
       <nav className="flex flex-row gap-6 text-lg font-medium md:items-center md:text-sm lg:gap-6">
         <Link
           className={cn(
-            pathname === "/" ? "dark:text-gray-400" : "text-gray-400",
+            pathname === "/" ? "text-slate dark:text-white" : "text-gray-400",
             "hover:text-gray-900 dark:hover:text-white",
           )}
           href="/"
@@ -23,7 +23,9 @@ export const TopNav = () => {
         </Link>
         <Link
           className={cn(
-            pathname === "/my-logs" ? "dark:text-gray-400" : "text-gray-400",
+            pathname === "/my-logs"
+              ? "text-slate  dark:text-white"
+              : "text-gray-400",
             "hover:text-gray-900 dark:hover:text-white",
           )}
           href="/my-logs"

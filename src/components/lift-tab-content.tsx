@@ -29,24 +29,24 @@ export const LiftTabContent = async ({
   return (
     <div className="flex flex-col gap-4">
       <h2 className="text-2xl font-bold">{title}</h2>
-      <section className="grid w-full grid-cols-1 gap-4 gap-x-8 transition-all sm:grid-cols-2 xl:grid-cols-4">
+      <section className="grid w-full grid-cols-2 gap-4 gap-x-8 transition-all sm:grid-cols-2 xl:grid-cols-4">
         <LiftStat
           label={"Lifts Logged"}
           icon={NotebookTextIcon}
           amount={String(logs.length)}
-          description={"The Lifts You Have Logged"}
+          description={"Lift History"}
         />
         <LiftStat
           label={"Personl Best"}
           icon={MedalIcon}
           amount={String(maxAmount)}
-          description={"Best Lift to Date"}
+          description={"Strongest Yet"}
         />
         <LiftStat
           label={"Strength Gained"}
           icon={DumbbellIcon}
           amount={String(maxAmount - minAmount)}
-          description={"See How Far You Have Come"}
+          description={"Growing Strong"}
         />
       </section>
       <section className="grid grid-cols-1 gap-4 transition-all lg:grid-cols-2">
